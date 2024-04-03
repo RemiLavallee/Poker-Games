@@ -1,7 +1,5 @@
 using System;
-using System.Transactions;
 using TMPro;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -35,6 +33,7 @@ public class Carte : MonoBehaviour, IPointerDownHandler
     [SerializeField] private TMP_Text valeurText;
     [SerializeField] private TMP_Text enseigneText;
     [SerializeField] private TMP_Text heldText;
+    [SerializeField] private Sprite backCard;
     public bool IsHeld;
     public CarteData Data { get; private set; }
 
@@ -112,5 +111,13 @@ public class Carte : MonoBehaviour, IPointerDownHandler
     {
         IsHeld = false;
         if (heldText != null) heldText.enabled = false;
+    }
+
+    public void ShowBackCard()
+    {
+        Image image = GetComponent<Image>();
+        image.sprite = backCard;
+        valeurText.enabled = false;
+        enseigneText.enabled = false;
     }
 }
