@@ -1042,6 +1042,9 @@ MonoBehaviour:
   - {fileID: 1695346102}
   - {fileID: 1550458012}
   - {fileID: 1577041049}
+  dealButton: {fileID: 1958207298}
+  drawButton: {fileID: 1851890050}
+  startButton: {fileID: 963961251}
 --- !u!4 &108143613
 Transform:
   m_ObjectHideFlags: 0

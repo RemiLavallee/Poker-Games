@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CarteManager : MonoBehaviour
@@ -11,9 +13,12 @@ public class CarteManager : MonoBehaviour
     [SerializeField] private TMP_Text enemyComboText;
     [SerializeField] private Carte[] main = new Carte[5];
     [SerializeField] private Carte[] enemyHand = new Carte[5];
+    [SerializeField] private Button dealButton;
+    [SerializeField] private Button drawButton;
+    [SerializeField] private Button startButton;
     private List<CarteData> deck = new List<CarteData>(52);
     private int indexCarte = 0;
-    private int hitDraw = 200;
+    private int hitDraw = 2;
     private bool isFirstDraw = true;
 
     private void Start()
@@ -27,6 +32,8 @@ public class CarteManager : MonoBehaviour
         }
         
         MixDeck();
+
+        ButtonStartGame();
     }
 
     private void MixDeck()
@@ -45,7 +52,13 @@ public class CarteManager : MonoBehaviour
     public void Piger()
     {
         isFirstDraw = false;
-        if (hitDraw <= 0) return;
+
+        if (hitDraw == 1)
+        {
+            drawButton.enabled = false;
+            DownOpacColor(drawButton);
+        }
+        
         for (int i = 0; i < 5; i++)
         {
             if (main[i].IsHeld)
@@ -72,17 +85,29 @@ public class CarteManager : MonoBehaviour
     private void DetectComboPoker()
     {
         List<CarteData> handData = main.Select(x => x.Data).ToList();
-        List<CarteData> enemyHandData = enemyHand.Select(x => x.Data).ToList();
         
         string playerCombo = DetectPokerHandCombo(handData);
         playerComboText.text = playerCombo;
-
-        string enemyCombo = DetectPokerHandCombo(enemyHandData);
-        enemyComboText.text = enemyCombo;
+    }
+    
+    private void DetectEnemyComboPoker()
+    {
+        List<CarteData> enemyHandData = enemyHand.Select(x => x.Data).ToList();
+        
+         string enemyCombo = DetectPokerHandCombo(enemyHandData);
+         enemyComboText.text = enemyCombo;
     }
 
     public void Deal()
     {
+        hitDraw = 2;
+        dealButton.enabled = false;
+        DownOpacColor(dealButton);
+        drawButton.enabled = false;
+        DownOpacColor(drawButton);
+        
+        DetectEnemyComboPoker();
+            
         for (int i = 0; i < 5; i++)
         {
             enemyHand[i].SetData(deck[indexCarte++]);
@@ -102,6 +127,12 @@ public class CarteManager : MonoBehaviour
     {
         if(isFirstDraw) Piger();
         isFirstDraw = false;
+        DownOpacColor(startButton);
+        ResetOpacColor(drawButton);
+        ResetOpacColor(dealButton);
+        startButton.enabled = false;
+        drawButton.enabled = true;
+        dealButton.enabled = true;
     }
 
     public void HitDraw()
@@ -236,5 +267,37 @@ public class CarteManager : MonoBehaviour
         {
             card.ShowBackCard();
         }
+        
+        foreach (var card in main)
+        {
+            card.ShowBackCard();
+        }
+        
+        isFirstDraw = true;
+        playerComboText.text = "";
+        enemyComboText.text = "";
+        ButtonStartGame();
+    }
+
+    private void DownOpacColor(Button button)
+    {
+        Color newColor = new Color(1f, 1f, 1f, 0.7f);
+        button.GetComponent<Image>().color = newColor;
+    }
+    
+    private void ResetOpacColor(Button button)
+    {
+        Color newColor = new Color(1f, 1f, 1f, 1f);
+        button.GetComponent<Image>().color = newColor;
+    }
+
+    private void ButtonStartGame()
+    {
+        dealButton.enabled = false;
+        drawButton.enabled = false;
+        startButton.enabled = true;
+        DownOpacColor(dealButton);
+        DownOpacColor(drawButton);
+        ResetOpacColor(startButton);
     }
 }
