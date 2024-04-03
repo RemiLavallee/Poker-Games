@@ -1,7 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,8 @@ public class CarteManager : MonoBehaviour
     [SerializeField] private Button dealButton;
     [SerializeField] private Button drawButton;
     [SerializeField] private Button startButton;
+    [SerializeField] private PlayerHealth player;
+    [SerializeField] private EnemyHealth enemy;
     private List<CarteData> deck = new List<CarteData>(52);
     private int indexCarte = 0;
     private int hitDraw = 2;
@@ -121,6 +124,8 @@ public class CarteManager : MonoBehaviour
         DetectComboPoker();
 
         StartCoroutine(ResetCardSprites());
+        
+        CompareHandsForAttack();
     }
 
     public void StartGame()
@@ -299,5 +304,37 @@ public class CarteManager : MonoBehaviour
         DownOpacColor(dealButton);
         DownOpacColor(drawButton);
         ResetOpacColor(startButton);
+    }
+
+    private int GetHandValue(string handCombo)
+    {
+        switch (handCombo)
+        {
+            case "ROYAL FLUSH": return 100;
+            case "STRAIGHT FLUSH": return 90;
+            case "FOUR OF A KIND": return 80;
+            case "FULL HOUSE": return 70;
+            case "FLUSH": return 60;
+            case "STRAIGHT": return 50;
+            case "BRELAN": return 40;
+            case "TWO PAIRS": return 30;
+            case "PAIR": return 20;
+            default: return 10;
+        }
+    }
+
+    private void CompareHandsForAttack()
+    {
+        var playerHandValue = GetHandValue(playerComboText.text);
+        var enemyHandValue = GetHandValue(enemyComboText.text);
+
+        if (playerHandValue > enemyHandValue)
+        {
+            enemy.TakeDamage(playerHandValue);
+        }
+        else if (enemyHandValue > playerHandValue)
+        {
+            player.TakeDamage(enemyHandValue);
+        }
     }
 }

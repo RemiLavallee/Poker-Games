@@ -1045,6 +1045,8 @@ MonoBehaviour:
   dealButton: {fileID: 1958207298}
   drawButton: {fileID: 1851890050}
   startButton: {fileID: 963961251}
+  player: {fileID: 1533518916}
+  enemy: {fileID: 1745974001}
 --- !u!4 &108143613
 Transform:
   m_ObjectHideFlags: 0
