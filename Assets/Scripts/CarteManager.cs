@@ -21,7 +21,7 @@ public class CarteManager : MonoBehaviour
     [SerializeField] private EnemyHealth enemy;
     private List<CarteData> deck = new List<CarteData>(52);
     private int indexCarte = 0;
-    private int hitDraw = 2;
+    public int hitDraw = 2;
     private bool isFirstDraw = true;
 
     private void Start()
@@ -179,14 +179,14 @@ public class CarteManager : MonoBehaviour
     
     private bool IsFlush(List<CarteData> hand)
     {
-        if (hand == null || hand.Count == 0 || hand[0] == null || hand[0].enseigne == null)
+        if (hand == null || hand.Count == 0 || hand[0] == null)
         {
             return false;
         }
 
         for (int i = 1; i < hand.Count; i++)
         {
-            if (hand[i] == null || hand[i].enseigne == null || hand[i].enseigne != hand[0].enseigne)
+            if (hand[i] == null || hand[i].enseigne != hand[0].enseigne)
             {
                 return false;
             }

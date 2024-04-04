@@ -1,31 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractButton : MonoBehaviour
 {
-    [SerializeField] private GameObject scoreUI;
+    [SerializeField] private GameObject panelUI;
 
-    public void OpenScoreUI()
+    public void OpenPanelUI(GameObject panelUI)
     {
-        scoreUI.SetActive(true);
+        panelUI.SetActive(true);
     }
 
-    public void CloseScoreUI()
+    public void ClosePanelUI(GameObject panelUI)
     {
-        scoreUI.SetActive(false);
-    }
-
-    public void OpenItemUI()
-    {
-        
-    }
-
-    public void CloseItemUI()
-    {
-        
+        panelUI.SetActive(false);
     }
 
     public void BackHome()
     {
-        
+        SceneManager.LoadSceneAsync("Lobby");
     }
 }

@@ -13,3 +13,13 @@ M
 Assets/Scripts/EnemyHealth.cs,a\b\ab8ee20144b19e3d1221ef94b08a206e14c7b0a5
 P
  Assets/Scripts/EnemyStatutBar.cs,a\5\a5c22049ca13e7066b7c93b724d1db929bc935fe
+Q
+!Assets/Scripts/ItemsScriptable.cs,6\5\6593f48fcf1cf252f03d5810135fad7759f5e8d6
+L
+Assets/Scripts/UsingItems.cs,8\4\847bca7ff0c430c0e7bc05a4caf6ad1f366aec90
+P
+ Assets/Scripts/PassiveRelique.cs,c\7\c7640d6a95db245d58662f99fb223368cc8b305b
+S
+#Assets/Scripts/ReliqueBoostCoins.cs,1\4\147ab2a68667df57d50d17c2146562543e79c17c
+U
+%Assets/Scripts/ReliqueIncreaseDraw.cs,7\d\7d1a5acf52a1d32521c2805848dda0ada280aa10
