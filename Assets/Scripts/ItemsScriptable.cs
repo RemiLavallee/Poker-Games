@@ -7,16 +7,23 @@ using UnityEngine.UIElements;
     menuName = "ScriptableObject/Item")]
 public class ItemsScriptable : ScriptableObject
 {
-    [SerializeField] private GameObject prefab;
-    [SerializeField] private int cost;
-    [SerializeField] private Sprite image;
-    [SerializeField] private string description;
-    [SerializeField] private int itemCount;
+    [SerializeField] internal GameObject prefab;
+    [SerializeField] internal string nameItem;
+    [SerializeField] internal int cost;
+    [SerializeField] internal Sprite image;
+    [SerializeField] internal string description;
+    [SerializeField] internal int itemCount;
     
     public GameObject Prefab
     {
         get => prefab;
         private set => prefab = value;
+    }
+    
+    public string Name
+    {
+        get => nameItem;
+        private set => nameItem = value;
     }
     
     public int Cost

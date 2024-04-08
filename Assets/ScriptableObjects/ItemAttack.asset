@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e729d3021d412246b3e062fc14992af, type: 3}
-  m_Name: Item_BoostAttack
+  m_Name: ItemAttack
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  cost: 0
-  image: {fileID: 0}
-  description: 
+  nameItem: Boost attack
+  cost: 30
+  image: {fileID: 1964146897, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}
+  description: Multiply by 2 the next attack
   itemCount: 0

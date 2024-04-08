@@ -1,0 +1,6 @@
+
+Ecsharpsquid:S3903"#Move 'Shop' into a named namespace.(äŸñ¬üÿÿÿÿ
+csharpsquid:S1186I"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ª–„¶8şäÌÚë1
+œcsharpsquid:S1186^"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(úõš8€¬ºÛë1
+csharpsquid:S3973"VUse curly braces or indentation to denote the code conditionally executed by this 'if'(¦Ç¹Îüÿÿÿÿ8‡ƒÜÚë1
+Gcsharpsquid:S125F"Remove this commented out code.(ˆÂ±¦ûÿÿÿÿ8ÜüßÚë1
