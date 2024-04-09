@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e729d3021d412246b3e062fc14992af, type: 3}
-  m_Name: ItemHit
+  m_Name: ReliqueCard
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  nameItem: Attack Potion
-  cost: 20
-  image: {fileID: 1061548126, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}
-  description: Decrease enemy health by 20.
+  prefab: {fileID: 6759622395462562172, guid: af0ffcee785c07640adebaca2fdfc16c, type: 3}
+  nameItem: Draw Up
+  cost: 40
+  image: {fileID: -1937251479, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}
+  description: Increase Draw by one.
   itemCount: 0

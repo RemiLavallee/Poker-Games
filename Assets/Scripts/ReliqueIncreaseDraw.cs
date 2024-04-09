@@ -1,7 +1,10 @@
 public class ReliqueIncreaseDraw : UsingItems
 {
-    protected override void ApplyModifier()
+    private CarteManager player;
+    
+    public override void ApplyModifier()
     {
+        player = FindObjectOfType<CarteManager>();
         player.hitDraw++;
     }
 }

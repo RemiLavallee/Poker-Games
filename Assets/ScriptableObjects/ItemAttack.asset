@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ItemAttack
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  nameItem: Boost attack
+  nameItem: Boost Attack
   cost: 30
   image: {fileID: 1964146897, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}
-  description: Multiply by 2 the next attack
-  itemCount: 0
+  description: Multiply the next attack by 2.
+  itemCount: 5

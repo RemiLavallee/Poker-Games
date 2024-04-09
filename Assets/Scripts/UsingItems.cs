@@ -6,13 +6,6 @@ using UnityEngine;
 public class UsingItems : MonoBehaviour
 {
     public ItemsScriptable itemData;
-    protected CarteManager player;
 
-    protected virtual void ApplyModifier(){}
-
-    public void Start()
-    {
-        player = FindObjectOfType<CarteManager>();
-        ApplyModifier();
-    }
+    public virtual void ApplyModifier(){}
 }

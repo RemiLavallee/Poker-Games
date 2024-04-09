@@ -1,6 +1,10 @@
 
 Ecsharpsquid:S3903"#Move 'Shop' into a named namespace.(äŸñ¬üÿÿÿÿ
-csharpsquid:S1186I"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ª–„¶8şäÌÚë1
-œcsharpsquid:S1186^"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(úõš8€¬ºÛë1
-csharpsquid:S3973"VUse curly braces or indentation to denote the code conditionally executed by this 'if'(¦Ç¹Îüÿÿÿÿ8‡ƒÜÚë1
-Gcsharpsquid:S125F"Remove this commented out code.(ˆÂ±¦ûÿÿÿÿ8ÜüßÚë1
+mcsharpsquid:S11040"DMake this field 'private' and encapsulate it in a 'public' property.(¨ ÿşúÿÿÿÿ8¶ÈØõë1
+hcsharpsquid:S11041"DMake this field 'private' and encapsulate it in a 'public' property.(¶’Çé8â”èõë1
+hcsharpsquid:S1104!"DMake this field 'private' and encapsulate it in a 'public' property.(ÒêÔ«8ôÔ÷ë1
+hcsharpsquid:S1104""DMake this field 'private' and encapsulate it in a 'public' property.(Õ¸8ÂŠ÷ë1
+mcsharpsquid:S1104#"DMake this field 'private' and encapsulate it in a 'public' property.(ÔÛ÷Àşÿÿÿÿ8À¶÷ë1
+mcsharpsquid:S1104*"DMake this field 'private' and encapsulate it in a 'public' property.(İ ¼üøÿÿÿÿ8•©˜úë1
+mcsharpsquid:S1104+"DMake this field 'private' and encapsulate it in a 'public' property.(°ÑÀæøÿÿÿÿ8ú¿™úë1
+hcsharpsquid:S1104,"DMake this field 'private' and encapsulate it in a 'public' property.(Ø×Êƒ8ú¿™úë1
