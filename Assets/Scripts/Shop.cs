@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -53,6 +54,7 @@ public class Shop : MonoBehaviour
 
     public void Start()
     {
+        
         Inventory.instance.UpdateTextUi();
 
         foreach (var item in itemInventory)
@@ -76,6 +78,8 @@ public class Shop : MonoBehaviour
                 relique.reliqueCountText.text = itemCount.ToString();
             }
         }
+        
+        LoadAndSave.instance.LoadData();
     }
 
     public void Exit(GameObject panelToClose)
@@ -118,6 +122,8 @@ public class Shop : MonoBehaviour
     {
         if (currentImageIndex == 0) SceneManager.LoadSceneAsync("MoteurJeu");
         if (currentImageIndex == 1) panelShop.SetActive(true);
+        
+        LoadAndSave.instance.SaveData();
     }
 
     public void BuyItem()
@@ -182,4 +188,5 @@ public class Shop : MonoBehaviour
             }
         }
     }
+    
 }

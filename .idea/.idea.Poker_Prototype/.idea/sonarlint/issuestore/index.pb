@@ -37,3 +37,7 @@ O
 Assets/Scripts/ItemInventory.cs,3\9\395bda571ee939843664dc35c06de8c65da25c77
 R
 "Assets/Scripts/InventoryManager.cs,3\9\3903b3804e57552db0c7b8c113f58d35c534e40b
+I
+Assets/Scripts/Victory.cs,5\c\5cf84b0db6a3cdf226a6165ace546a7a5cb76a3d
+M
+Assets/Scripts/LoadAndSave.cs,2\4\245866887a05020acc412268b774576fa24ad794

@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        UpdateTextUi();
     }
 
     public void AddCoins(int count)

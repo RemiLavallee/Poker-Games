@@ -1,6 +1,5 @@
 
 Lcsharpsquid:S3903"*Move 'EnemyHealth' into a named namespace.(¡ÊÑ¦ıÿÿÿÿ
-csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(®ûí¯8”Ï‘­ê1
 mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¯úàùûÿÿÿÿ8”Ï‘­ê1
 mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(à·ÈÙúÿÿÿÿ8”Ï‘­ê1
 mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(‘µ¡›ùÿÿÿÿ8”Ï‘­ê1
