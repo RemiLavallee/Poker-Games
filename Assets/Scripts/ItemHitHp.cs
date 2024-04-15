@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ItemHitHp : MonoBehaviour
+public class ItemHitHp : UsingItems
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private EnemyHealth enemyHealth;
 
-    // Update is called once per frame
-    void Update()
+    public override void ApplyModifier()
     {
-        
+        enemyHealth = FindObjectOfType<EnemyHealth>();
+        enemyHealth.currentHealth -= 20;
     }
 }

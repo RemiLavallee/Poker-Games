@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ReliqueBoostCoins : MonoBehaviour
+public class ReliqueBoostCoins : UsingItems
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Victory victory;
 
-    // Update is called once per frame
-    void Update()
+    public override void ApplyModifier()
     {
-        
+        victory = FindObjectOfType<Victory>();
+        victory.coinsWin *= 2;
     }
 }

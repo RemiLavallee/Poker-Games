@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +7,7 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+    private AudioManager audioManager;
     [Header("Main Panel")] [SerializeField]
     private Button rightClick;
     [SerializeField] private Button leftClick;
@@ -51,6 +51,11 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject[] imageItem;
     [SerializeField] private GameObject[] imageRelique;
     private ItemsScriptable selectedItemScriptable = null;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void Start()
     {
@@ -98,6 +103,7 @@ public class Shop : MonoBehaviour
         {
             currentImageIndex++;
             UpdateImage();
+            PressButtonSound();
         }
     }
 
@@ -107,6 +113,7 @@ public class Shop : MonoBehaviour
         {
             currentImageIndex--;
             UpdateImage();
+            PressButtonSound();
         }
     }
 
@@ -187,6 +194,11 @@ public class Shop : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void PressButtonSound()
+    {
+        audioManager.PlaySound(audioManager.pressButton);
     }
     
 }

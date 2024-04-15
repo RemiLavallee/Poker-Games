@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e729d3021d412246b3e062fc14992af, type: 3}
   m_Name: ItemAttack
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5626322880080505299, guid: db8032c9ad92d2541815eec90ef8b51e, type: 3}
   nameItem: Boost Attack
   cost: 30
   image: {fileID: 1964146897, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}

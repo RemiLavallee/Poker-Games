@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e729d3021d412246b3e062fc14992af, type: 3}
   m_Name: ReliqueCoins
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6433345941479922049, guid: ccd1705daacd87242b01cfcac951cd4e, type: 3}
   nameItem: Coins Booster
   cost: 50
   image: {fileID: 482983367, guid: 24d6928c41df4bc4e9d4fb10b5b4e0de, type: 3}

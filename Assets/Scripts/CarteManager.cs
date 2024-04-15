@@ -1,8 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +22,14 @@ public class CarteManager : MonoBehaviour
     private int indexCarte = 0;
     public int hitDraw = 2;
     private bool isFirstDraw = true;
+    public int attackPower;
+    [SerializeField] private ItemsScriptable itemsScriptable;
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -33,10 +40,11 @@ public class CarteManager : MonoBehaviour
                 deck.Add(new CarteData(j, (Enseigne)i));
             }
         }
-        
+
         MixDeck();
 
         ButtonStartGame();
+
     }
 
     private void MixDeck()
@@ -51,7 +59,7 @@ public class CarteManager : MonoBehaviour
 
         deck = temp;
     }
-    
+
     public void Piger()
     {
         isFirstDraw = false;
@@ -61,14 +69,14 @@ public class CarteManager : MonoBehaviour
             drawButton.enabled = false;
             DownOpacColor(drawButton);
         }
-        
+
         for (int i = 0; i < 5; i++)
         {
             if (main[i].IsHeld)
             {
                 continue;
             }
-            
+
             main[i].SetData(deck[indexCarte++]);
             if (indexCarte >= deck.Count)
             {
@@ -88,29 +96,31 @@ public class CarteManager : MonoBehaviour
     private void DetectComboPoker()
     {
         List<CarteData> handData = main.Select(x => x.Data).ToList();
-        
+
         string playerCombo = DetectPokerHandCombo(handData);
         playerComboText.text = playerCombo;
     }
-    
+
     private void DetectEnemyComboPoker()
     {
         List<CarteData> enemyHandData = enemyHand.Select(x => x.Data).ToList();
-        
-         string enemyCombo = DetectPokerHandCombo(enemyHandData);
-         enemyComboText.text = enemyCombo;
+
+        string enemyCombo = DetectPokerHandCombo(enemyHandData);
+        enemyComboText.text = enemyCombo;
     }
 
     public void Deal()
     {
+        audioManager.PlaySound(audioManager.hitDamage);
+        
         hitDraw = 2;
         dealButton.enabled = false;
         DownOpacColor(dealButton);
         drawButton.enabled = false;
         DownOpacColor(drawButton);
-        
+
         DetectEnemyComboPoker();
-            
+
         for (int i = 0; i < 5; i++)
         {
             enemyHand[i].SetData(deck[indexCarte++]);
@@ -120,17 +130,20 @@ public class CarteManager : MonoBehaviour
                 MixDeck();
             }
         }
-        
+
         DetectComboPoker();
 
         StartCoroutine(ResetCardSprites());
-        
+
         CompareHandsForAttack();
+
+        UsingItems usingItemScript = itemsScriptable.prefab.GetComponent<UsingItems>();
+        usingItemScript.DisableModifier();
     }
 
     public void StartGame()
     {
-        if(isFirstDraw) Piger();
+        if (isFirstDraw) Piger();
         isFirstDraw = false;
         DownOpacColor(startButton);
         ResetOpacColor(drawButton);
@@ -152,31 +165,32 @@ public class CarteManager : MonoBehaviour
         {
             if (card == null || !new HashSet<int> { 10, 11, 12, 13, 1 }.Contains(card.valeur)) return false;
         }
+
         return IsFlush(hand);
     }
-    
+
     private bool IsStraightFlush(List<CarteData> hand)
     {
         return IsFlush(hand) && IsStraight(hand);
     }
-    
+
     private bool IsFourKind(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         if (hand[0] == null || hand[3] == null || hand[1] == null || hand[4] == null) return false;
-        
+
         return (hand[0].valeur == hand[3].valeur || hand[1].valeur == hand[4].valeur);
     }
-    
+
     private bool IsFullHouse(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         if (hand[0] == null || hand[1] == null || hand[2] == null || hand[3] == null || hand[4] == null) return false;
-        
+
         return (hand[0].valeur == hand[2].valeur && hand[3].valeur == hand[4].valeur) ||
                (hand[0].valeur == hand[1].valeur && hand[2].valeur == hand[4].valeur);
     }
-    
+
     private bool IsFlush(List<CarteData> hand)
     {
         if (hand == null || hand.Count == 0 || hand[0] == null)
@@ -191,10 +205,10 @@ public class CarteManager : MonoBehaviour
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     private bool IsStraight(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
@@ -203,9 +217,10 @@ public class CarteManager : MonoBehaviour
             if (hand[i] == null || hand[i + 1] == null || hand[i].valeur + 1 != hand[i + 1].valeur)
                 return false;
         }
+
         return true;
     }
-    
+
     private bool IsBrelan(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 3) return false;
@@ -216,9 +231,10 @@ public class CarteManager : MonoBehaviour
             if (hand[i].valeur == hand[i + 1].valeur && hand[i].valeur == hand[i + 2].valeur)
                 return true;
         }
+
         return false;
     }
-    
+
     private bool IsTwoPairs(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 4) return false;
@@ -229,12 +245,13 @@ public class CarteManager : MonoBehaviour
             if (hand[i].valeur == hand[i + 1].valeur)
             {
                 pairCount++;
-                i++; 
+                i++;
             }
         }
+
         return pairCount == 2;
     }
-    
+
     private bool IsOnePair(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 2) return false;
@@ -244,9 +261,10 @@ public class CarteManager : MonoBehaviour
             if (hand[i].valeur == hand[i + 1].valeur)
                 return true;
         }
+
         return false;
     }
-    
+
     private string DetectPokerHandCombo(List<CarteData> handData)
     {
         handData.Sort();
@@ -260,7 +278,7 @@ public class CarteManager : MonoBehaviour
         if (IsBrelan(handData)) return "BRELAN";
         if (IsTwoPairs(handData)) return "TWO PAIRS";
         if (IsOnePair(handData)) return "PAIR";
-    
+
         return "HIGH CARD";
     }
 
@@ -272,12 +290,12 @@ public class CarteManager : MonoBehaviour
         {
             card.ShowBackCard();
         }
-        
+
         foreach (var card in main)
         {
             card.ShowBackCard();
         }
-        
+
         isFirstDraw = true;
         playerComboText.text = "";
         enemyComboText.text = "";
@@ -289,7 +307,7 @@ public class CarteManager : MonoBehaviour
         Color newColor = new Color(1f, 1f, 1f, 0.7f);
         button.GetComponent<Image>().color = newColor;
     }
-    
+
     private void ResetOpacColor(Button button)
     {
         Color newColor = new Color(1f, 1f, 1f, 1f);
@@ -310,16 +328,16 @@ public class CarteManager : MonoBehaviour
     {
         switch (handCombo)
         {
-            case "ROYAL FLUSH": return 100;
-            case "STRAIGHT FLUSH": return 90;
-            case "FOUR OF A KIND": return 80;
-            case "FULL HOUSE": return 70;
-            case "FLUSH": return 60;
-            case "STRAIGHT": return 50;
-            case "BRELAN": return 40;
-            case "TWO PAIRS": return 30;
-            case "PAIR": return 20;
-            default: return 10;
+            case "ROYAL FLUSH": return attackPower * 10;
+            case "STRAIGHT FLUSH": return attackPower * 9;
+            case "FOUR OF A KIND": return attackPower * 8;
+            case "FULL HOUSE": return attackPower * 7;
+            case "FLUSH": return attackPower * 6;
+            case "STRAIGHT": return attackPower * 5;
+            case "BRELAN": return attackPower * 4;
+            case "TWO PAIRS": return attackPower * 3;
+            case "PAIR": return attackPower * 2;
+            default: return attackPower;
         }
     }
 
@@ -336,5 +354,20 @@ public class CarteManager : MonoBehaviour
         {
             player.TakeDamage(enemyHandValue);
         }
+    }
+
+    public void PressButttonSound()
+    {
+        audioManager.PlaySound(audioManager.pressButton);
+    }
+
+    public void CardShuffleSound()
+    {
+        
+    }
+
+    public void cardDrawSound()
+    {
+        
     }
 }

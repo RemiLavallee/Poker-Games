@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,6 +29,7 @@ public class CarteData : IComparable<CarteData>
         return valeur.CompareTo(other.valeur);
     }
 }
+
 public class Carte : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private TMP_Text valeurText;
@@ -47,12 +49,12 @@ public class Carte : MonoBehaviour, IPointerDownHandler
         enseigneText.enabled = false;
         valeurText.enabled = false;
     }
-    
+
     internal void SetData(CarteData carteData)
     {
         Data = carteData;
         string valeurString = carteData.valeur.ToString();
-        
+
         switch (carteData.valeur)
         {
             case 1:
@@ -68,11 +70,12 @@ public class Carte : MonoBehaviour, IPointerDownHandler
                 valeurString = "K";
                 break;
         }
+
         valeurText.text = valeurString;
 
         string enseigneString = valeurString;
         Color color = Color.red;
-        
+
         switch (carteData.enseigne)
         {
             case Enseigne.Coeur:
@@ -94,13 +97,14 @@ public class Carte : MonoBehaviour, IPointerDownHandler
         enseigneText.text = enseigneString;
         enseigneText.color = color;
         valeurText.color = color;
-        
+
         valeurText.enabled = true;
         enseigneText.enabled = true;
         Image image = GetComponent<Image>();
         image.sprite = null;
 
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         IsHeld = !IsHeld;

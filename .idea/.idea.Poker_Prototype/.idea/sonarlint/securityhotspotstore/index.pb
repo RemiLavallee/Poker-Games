@@ -17,8 +17,6 @@ Q
 !Assets/Scripts/ItemsScriptable.cs,6\5\6593f48fcf1cf252f03d5810135fad7759f5e8d6
 L
 Assets/Scripts/UsingItems.cs,8\4\847bca7ff0c430c0e7bc05a4caf6ad1f366aec90
-P
- Assets/Scripts/PassiveRelique.cs,c\7\c7640d6a95db245d58662f99fb223368cc8b305b
 S
 #Assets/Scripts/ReliqueBoostCoins.cs,1\4\147ab2a68667df57d50d17c2146562543e79c17c
 U
@@ -41,3 +39,5 @@ I
 Assets/Scripts/Victory.cs,5\c\5cf84b0db6a3cdf226a6165ace546a7a5cb76a3d
 M
 Assets/Scripts/LoadAndSave.cs,2\4\245866887a05020acc412268b774576fa24ad794
+N
+Assets/Scripts/AudioManager.cs,0\4\047ee41b2df711616e4a56dba7ef08fa2523341b

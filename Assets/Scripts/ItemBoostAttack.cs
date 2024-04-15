@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ItemBoostAttack : MonoBehaviour
+public class ItemBoostAttack : UsingItems
 {
-    // Start is called before the first frame update
-    void Start()
+    private CarteManager carte;
+
+    private void Start()
     {
-        
+       // carte = FindObjectOfType<CarteManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ApplyModifier()
     {
-        
+        carte = FindObjectOfType<CarteManager>();
+        carte.attackPower *= 2;
+    }
+
+    public override void DisableModifier()
+    {
+        carte = FindObjectOfType<CarteManager>();
+        carte.attackPower /= 2;
     }
 }

@@ -1,4 +1,3 @@
 
-Ecsharpsquid:S3903"(Move 'ItemHitHp' into a named namespace.(—Úµ²
-›csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ûàîºûÿÿÿÿ
-›csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(®±®“üÿÿÿÿ
+Ecsharpsquid:S3903"(Move 'ItemHitHp' into a named namespace.(º¥Á–
+~csharpsquid:S1450"ZRemove the field 'enemyHealth' and declare it as a local variable in the relevant methods.(îš¸ä8éüŒ÷ì1
