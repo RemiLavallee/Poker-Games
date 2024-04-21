@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -18,16 +19,21 @@ public class Victory : MonoBehaviour
     {
         if (enemy.currentHealth <= 0)
         {
-            panelWin.SetActive(true);
+            StartCoroutine(ActiveWinPanel());
         }
-        
-        coinsWinText.text = coinsWin.ToString();
-        Inventory.instance.AddCoins(coinsWin);
-        Inventory.instance.UpdateTextUi();
     }
 
     public void Confirm()
     {
         LoadAndSave.instance.SaveData();
+    }
+
+    private IEnumerator ActiveWinPanel()
+    {
+        yield return new WaitForSeconds(2f);
+        panelWin.SetActive(true);
+        coinsWinText.text = coinsWin.ToString();
+        Inventory.instance.AddCoins(coinsWin);
+        Inventory.instance.UpdateTextUi();
     }
 }

@@ -41,3 +41,7 @@ M
 Assets/Scripts/LoadAndSave.cs,2\4\245866887a05020acc412268b774576fa24ad794
 N
 Assets/Scripts/AudioManager.cs,0\4\047ee41b2df711616e4a56dba7ef08fa2523341b
+L
+Assets/Scripts/CarteStats.cs,f\4\f46d469f82a7d9bc5276109fb2f4a6f20ef391e5
+M
+Assets/Scripts/DeckManager.cs,1\4\14cc48fb112fb4a9ec19f46f2597ea6ac1994620

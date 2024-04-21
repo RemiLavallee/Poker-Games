@@ -1,8 +1,8 @@
 
-csharpsquid:S1210"\When implementing IComparable<T>, you should also override Equals, ==, !=, <, <=, >, and >=.(¬ÍŠ~8Õ¨öŒè1
-Pcsharpsquid:S3903"'Move 'Enseigne' into a named namespace.(ğÄüøüÿÿÿÿ8Ö¨öŒè1
-Kcsharpsquid:S3903"(Move 'CarteData' into a named namespace.(¬ÍŠ~8Ö¨öŒè1
-Mcsharpsquid:S3903!"$Move 'Carte' into a named namespace.(à‚€½ûÿÿÿÿ8×¨öŒè1
-gcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(áşÃ-8×¨öŒè1
-`csharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¦™X
-hcsharpsquid:S1104'"DMake this field 'private' and encapsulate it in a 'public' property.(ÅÜ¹İ8×¨öŒè1
+csharpsquid:S1210"\When implementing IComparable<T>, you should also override Equals, ==, !=, <, <=, >, and >=.(¬ÍŠ~8Õ¨öŒè1
+Pcsharpsquid:S3903"'Move 'Enseigne' into a named namespace.(ğÄüøüÿÿÿÿ8Ö¨öŒè1
+Kcsharpsquid:S3903"(Move 'CarteData' into a named namespace.(¬ÍŠ~8Ö¨öŒè1
+Mcsharpsquid:S3903 "$Move 'Carte' into a named namespace.(à‚€½ûÿÿÿÿ8×¨öŒè1
+gcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(áşÃ-8×¨öŒè1
+`csharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¦™X
+hcsharpsquid:S1104&"DMake this field 'private' and encapsulate it in a 'public' property.(ÅÜ¹İ8×¨öŒè1

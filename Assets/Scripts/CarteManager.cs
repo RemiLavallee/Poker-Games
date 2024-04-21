@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +24,8 @@ public class CarteManager : MonoBehaviour
     public int attackPower;
     [SerializeField] private ItemsScriptable itemsScriptable;
     private AudioManager audioManager;
+    [SerializeField] private GameObject sword1;
+    [SerializeField] private GameObject sword2;
 
     private void Awake()
     {
@@ -44,7 +45,6 @@ public class CarteManager : MonoBehaviour
         MixDeck();
 
         ButtonStartGame();
-
     }
 
     private void MixDeck()
@@ -76,6 +76,8 @@ public class CarteManager : MonoBehaviour
             {
                 continue;
             }
+            
+            StartCoroutine(FlipCard(main));
 
             main[i].SetData(deck[indexCarte++]);
             if (indexCarte >= deck.Count)
@@ -112,6 +114,7 @@ public class CarteManager : MonoBehaviour
     public void Deal()
     {
         audioManager.PlaySound(audioManager.hitDamage);
+        StartCoroutine(AnimateSwords());
         
         hitDraw = 2;
         dealButton.enabled = false;
@@ -137,8 +140,8 @@ public class CarteManager : MonoBehaviour
 
         CompareHandsForAttack();
 
-        UsingItems usingItemScript = itemsScriptable.prefab.GetComponent<UsingItems>();
-        usingItemScript.DisableModifier();
+        //UsingItems usingItemScript = itemsScriptable.prefab.GetComponent<UsingItems>();
+        //usingItemScript.DisableModifier();
     }
 
     public void StartGame()
@@ -284,7 +287,7 @@ public class CarteManager : MonoBehaviour
 
     private IEnumerator ResetCardSprites()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         foreach (var card in enemyHand)
         {
@@ -369,5 +372,63 @@ public class CarteManager : MonoBehaviour
     public void cardDrawSound()
     {
         
+    }
+
+    private IEnumerator AnimateSwords()
+    {
+        float animSpeed = 3.0f;
+        
+        for (float t = 0; t < 1f; t += Time.deltaTime * animSpeed)
+        {
+            sword1.transform.localPosition = Vector3.Lerp(new Vector3(-28, -15, 0), new Vector3(-128, -15, 0), t);
+            sword2.transform.localPosition = Vector3.Lerp(new Vector3(12, -15, 0), new Vector3(112, -25, 0), t);
+            sword1.transform.Rotate(0, 0, 90 * Time.deltaTime);
+            sword2.transform.Rotate(0, 0, -90 * Time.deltaTime);
+            sword1.transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(1.25f, 1.25f, 1.25f), t);
+            sword2.transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(1.25f, 1.25f, 1.25f), t);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.25f);
+        
+        for (float t = 0; t < 1f; t += Time.deltaTime * animSpeed)
+        {
+            sword1.transform.localPosition = Vector3.Lerp(new Vector3(-128, -15, 0), new Vector3(-28, -15, 0), t);
+            sword2.transform.localPosition = Vector3.Lerp(new Vector3(112, -15, 0), new Vector3(12, -15, 0), t);
+            sword1.transform.Rotate(0, 0, -90 * Time.deltaTime);
+            sword2.transform.Rotate(0, 0, 90 * Time.deltaTime);
+            sword1.transform.localScale = Vector3.Lerp(new Vector3(1.25f, 1.25f, 1.25f), new Vector3(1, 1, 1), t);
+            sword2.transform.localScale = Vector3.Lerp(new Vector3(1.25f, 1.25f, 1.25f), new Vector3(1, 1, 1), t);
+            yield return null;
+        }
+    }
+
+    private IEnumerator animateCard(Carte carte)
+    {
+        for (float angle = 0; angle < 180; angle += Time.deltaTime * 180)
+        {
+            carte.transform.Rotate(0, Time.deltaTime * 180, 0);
+            yield return null;
+        }
+
+        carte.ShowBackCard();
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        for (float angle = 180; angle < 360; angle += Time.deltaTime * 180)
+        {
+            carte.transform.Rotate(0, Time.deltaTime * 180, 0);
+            yield return null;
+        }
+        
+        carte.ShowFrontCard();
+    }
+
+    public IEnumerator FlipCard(Carte[] carte)
+    {
+        foreach (Carte card in carte)
+        {
+            StartCoroutine(animateCard(card));
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

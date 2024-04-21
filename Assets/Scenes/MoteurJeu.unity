@@ -1033,9 +1033,9 @@ MonoBehaviour:
   playerComboText: {fileID: 514585897}
   enemyComboText: {fileID: 1226458162}
   main:
-  - {fileID: 2138045479}
   - {fileID: 1802253784}
   - {fileID: 706101186}
+  - {fileID: 2138045479}
   - {fileID: 1917475810}
   - {fileID: 1231137185}
   enemyHand:
@@ -1052,6 +1052,8 @@ MonoBehaviour:
   hitDraw: 2
   attackPower: 10
   itemsScriptable: {fileID: 11400000, guid: 68eb867db6971ba438fdac9339c68841, type: 2}
+  sword1: {fileID: 1138503735}
+  sword2: {fileID: 418217543}
 --- !u!4 &108143613
 Transform:
   m_ObjectHideFlags: 0
@@ -4823,7 +4825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -130}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.599998, y: -15}
+  m_AnchoredPosition: {x: 12, y: -15}
   m_SizeDelta: {x: 100, y: 310.5616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418217545
@@ -23803,15 +23805,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7577712357721120415, guid: 8792b3eeede95524fbd12ce454606c41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7577712357721120415, guid: 8792b3eeede95524fbd12ce454606c41, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7577712357721120415, guid: 8792b3eeede95524fbd12ce454606c41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7577712357721120415, guid: 8792b3eeede95524fbd12ce454606c41, type: 3}
       propertyPath: m_AnchoredPosition.x

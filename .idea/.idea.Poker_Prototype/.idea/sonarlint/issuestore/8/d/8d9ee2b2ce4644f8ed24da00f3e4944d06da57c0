@@ -1,7 +1,7 @@
 
-Mcsharpsquid:S3903
-"+Move 'CarteManager' into a named namespace.(Ÿ¡¹©şÿÿÿÿ
-£csharpsquid:S1186ì"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ÒÚŞùÿÿÿÿ8ÁÕøí1
-£csharpsquid:S1186ñ"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(­‡ ’ûÿÿÿÿ8ÁÕøí1
-hcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(•ä•Ÿ8³æ„Ìê1
-mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¨ûìƒüÿÿÿÿ8Ò¦ƒ÷ì1
+Tcsharpsquid:S3903	"+Move 'CarteManager' into a named namespace.(Ÿ¡¹©şÿÿÿÿ8Â©¨“î1
+£csharpsquid:S1186ï"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(ÒÚŞùÿÿÿÿ8Â©¨“î1
+£csharpsquid:S1186ô"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(­‡ ’ûÿÿÿÿ8Ã©¨“î1
+hcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(•ä•Ÿ8Ã©¨“î1
+mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¨ûìƒüÿÿÿÿ8Ã©¨“î1
+Hcsharpsquid:S125"Remove this commented out code.(ÕÍëøÿÿÿÿ8Ã©¨“î1
