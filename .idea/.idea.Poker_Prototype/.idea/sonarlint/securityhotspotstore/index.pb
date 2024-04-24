@@ -45,3 +45,5 @@ L
 Assets/Scripts/CarteStats.cs,f\4\f46d469f82a7d9bc5276109fb2f4a6f20ef391e5
 M
 Assets/Scripts/DeckManager.cs,1\4\14cc48fb112fb4a9ec19f46f2597ea6ac1994620
+O
+Assets/Scripts/Probabilities.cs,4\7\4739cd30c701665eab2dbcf7c23a8174f7931c63

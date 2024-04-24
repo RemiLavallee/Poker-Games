@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,10 +8,18 @@ public class CarteStats : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private TMP_Text valeurText;
     [SerializeField] private TMP_Text enseigneText;
-    [SerializeField] private GameObject heldImage;
+    public GameObject heldImage;
     public bool IsHeld;
-    public CarteData Data { get; private set; }
-    
+    public CarteData Data { get; set; }
+    private DeckManager deckManager;
+    public bool IsActive;
+
+    private void Awake()
+    {
+        deckManager = FindObjectOfType<DeckManager>();
+        IsActive = true;
+    }
+
     internal void SetData(CarteData carteData)
     {
         Data = carteData;
@@ -68,9 +77,20 @@ public class CarteStats : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        IsHeld = !IsHeld;
-        if (heldImage != null) heldImage.SetActive(IsHeld);
-        else this.gameObject.SetActive(false);
+        if (IsHeld)
+        {
+            IsHeld = false;
+            heldImage.SetActive(false);
+            deckManager.heldCount--;
+        }
+        else
+        {
+           
+                IsHeld = true;
+                heldImage.SetActive(true);
+                deckManager.heldCount++;
+            
+        }
     }
 
     internal void ClearHeld()
