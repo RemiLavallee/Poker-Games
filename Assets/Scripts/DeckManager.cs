@@ -289,6 +289,8 @@ public class DeckManager : MonoBehaviour
             }
         }
         
+        prob.DetectProbability();
+        prob.DetectBetterProbability();
         heldCount = 0;
     }
 
@@ -319,6 +321,8 @@ public class DeckManager : MonoBehaviour
             }
         }
 
+        prob.DetectProbability();
+        prob.DetectBetterProbability();
         heldCount = 0;
     }
 
@@ -343,6 +347,8 @@ public class DeckManager : MonoBehaviour
             }
         }
 
+        prob.DetectProbability();
+        prob.DetectBetterProbability();
         heldCount = 0;
     }
 }

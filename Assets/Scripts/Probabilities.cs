@@ -470,4 +470,18 @@ public class Probabilities : MonoBehaviour
         if (deckManager.IsOnePair(handData)) return (onePairProbability * 100).ToString("F4");
         return (highCardProbability * 100).ToString("F4");
     }
+    
+   - PROBABILITER 4ième As
+    
+    static void Main(string[] args)
+{
+    int remainingCards = 47; 
+    int acesLeft = 1; 
+
+    double probabilityFirstCardAce = (double)acesLeft / remainingCards;
+    double probabilitySecondCardAce = (double)acesLeft / (remainingCards - 1); 
+    double combinedProbability = probabilityFirstCardAce + (1 - probabilityFirstCardAce) * probabilitySecondCardAce;
+
+    Console.WriteLine($"La probabilité d'obtenir un quatrième as est de {combinedProbability:P2}.");
+}
 */
