@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -7,14 +6,20 @@ using UnityEngine.UI;
 
 public class DeckManager : MonoBehaviour
 {
-    private List<CarteData> deck = new List<CarteData>();
+    public List<CarteData> deck = new List<CarteData>();
     [SerializeField] private List<CarteStats> cardDisplays;
     public CarteStats[] main = new CarteStats[5];
     [SerializeField] private GameObject[] mainPanel;
     [SerializeField] private TMP_Text comboText;
     [SerializeField] private TMP_Text cardCount;
     public int heldCount;
-    
+    private Probabilities prob;
+
+    private void Awake()
+    {
+       prob = FindObjectOfType<Probabilities>();
+    }
+
     private void Start()
     {
         CreateDeck();
@@ -22,7 +27,6 @@ public class DeckManager : MonoBehaviour
         {
             AssignCardsToDisplays();
         }
-
         cardCount.text = deck.Count.ToString();
     }
 
@@ -57,8 +61,8 @@ public class DeckManager : MonoBehaviour
         string playerCombo = DetectPokerHandCombo(handData);
         comboText.text = playerCombo;
     }
-    
-        private bool IsRoyalFlush(List<CarteData> hand)
+
+    public bool IsRoyalFlush(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         foreach (var card in hand)
@@ -69,12 +73,12 @@ public class DeckManager : MonoBehaviour
         return IsFlush(hand);
     }
 
-    private bool IsStraightFlush(List<CarteData> hand)
+    public bool IsStraightFlush(List<CarteData> hand)
     {
         return IsFlush(hand) && IsStraight(hand);
     }
 
-    private bool IsFourKind(List<CarteData> hand)
+    public bool IsFourKind(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         if (hand[0] == null || hand[3] == null || hand[1] == null || hand[4] == null) return false;
@@ -82,7 +86,7 @@ public class DeckManager : MonoBehaviour
         return (hand[0].valeur == hand[3].valeur || hand[1].valeur == hand[4].valeur);
     }
 
-    private bool IsFullHouse(List<CarteData> hand)
+    public bool IsFullHouse(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         if (hand[0] == null || hand[1] == null || hand[2] == null || hand[3] == null || hand[4] == null) return false;
@@ -91,7 +95,7 @@ public class DeckManager : MonoBehaviour
                (hand[0].valeur == hand[1].valeur && hand[2].valeur == hand[4].valeur);
     }
 
-    private bool IsFlush(List<CarteData> hand)
+    public bool IsFlush(List<CarteData> hand)
     {
         if (hand == null || hand.Count == 0 || hand[0] == null)
         {
@@ -109,7 +113,7 @@ public class DeckManager : MonoBehaviour
         return true;
     }
 
-    private bool IsStraight(List<CarteData> hand)
+    public bool IsStraight(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 5) return false;
         for (int i = 0; i < hand.Count - 1; i++)
@@ -121,7 +125,7 @@ public class DeckManager : MonoBehaviour
         return true;
     }
 
-    private bool IsBrelan(List<CarteData> hand)
+    public bool IsBrelan(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 3) return false;
         for (int i = 0; i < hand.Count - 2; i++)
@@ -135,7 +139,7 @@ public class DeckManager : MonoBehaviour
         return false;
     }
 
-    private bool IsTwoPairs(List<CarteData> hand)
+    public bool IsTwoPairs(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 4) return false;
         int pairCount = 0;
@@ -152,7 +156,7 @@ public class DeckManager : MonoBehaviour
         return pairCount == 2;
     }
 
-    private bool IsOnePair(List<CarteData> hand)
+    public bool IsOnePair(List<CarteData> hand)
     {
         if (hand == null || hand.Count < 2) return false;
         for (int i = 0; i < hand.Count - 1; i++)
@@ -208,10 +212,16 @@ public class DeckManager : MonoBehaviour
             {
                 return;
             }
+            
+            card.IsHeld = false;
+            card.heldImage.SetActive(false);
         }
-        
+
         UpdateCard();
         DetectComboPoker();
+        prob.DetectProbability();
+        prob.DetectBetterProbability();
+        heldCount = 0;
     }
 
     private void UpdateCard()
@@ -300,6 +310,12 @@ public class DeckManager : MonoBehaviour
                 cardDisplay.IsHeld = false;
                 cardDisplay.heldImage.SetActive(false);
                 cardDisplay.IsActive = true;
+            }
+
+            if (cardDisplay.IsHeld && cardDisplay.IsActive)
+            {
+                cardDisplay.IsHeld = false;
+                cardDisplay.heldImage.SetActive(false);
             }
         }
 

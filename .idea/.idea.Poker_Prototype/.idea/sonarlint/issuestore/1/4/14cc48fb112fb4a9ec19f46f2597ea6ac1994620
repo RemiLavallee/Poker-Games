@@ -1,6 +1,5 @@
 
-Ncsharpsquid:S3903"*Move 'DeckManager' into a named namespace.(ÙÕİ©8ªÎ§Æğ1
-;csharpsquid:S2933
-"Make 'deck' 'readonly'.(Ğß¥¸8«Î§Æğ1
-mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ô¬àÕûÿÿÿÿ8ÀÓ£ñğ1
-mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(­ó£şÿÿÿÿ8ÏŸ¨Çğ1
+Ncsharpsquid:S3903"*Move 'DeckManager' into a named namespace.(ÙÕİ©8ªÎ§Æğ1
+hcsharpsquid:S1104	"DMake this field 'private' and encapsulate it in a 'public' property.(Ø™„8˜ÿ½—ñ1
+mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ô¬àÕûÿÿÿÿ8ÀÓ£ñğ1
+mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(­ó£şÿÿÿÿ8ÏŸ¨Çğ1

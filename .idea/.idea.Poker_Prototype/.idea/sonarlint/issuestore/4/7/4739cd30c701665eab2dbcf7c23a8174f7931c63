@@ -1,3 +1,6 @@
 
-Ncsharpsquid:S3903",Move 'Probabilities' into a named namespace.(ü²Şìúÿÿÿÿ
-Bcsharpsquid:S125"Remove this commented out code.(¢İ´û8¡ß«ñğ1
+|csharpsquid:S3776Ë"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(£¿†…ùÿÿÿÿ8ÂšéŠó1
+|csharpsquid:S3776î"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(Ÿëïúÿÿÿÿ8ÃšéŠó1
+Ncsharpsquid:S3903",Move 'Probabilities' into a named namespace.(ü²Şìúÿÿÿÿ
+wcsharpsquid:S6605‰"RCollection-specific "Exists" method should be used instead of the "Any" extension.(‘ÆÒ¾8ÅüèŠó1
+Hcsharpsquid:S125"Remove this commented out code.(ÒÌâ–øÿÿÿÿ8Åš›‹ó1
