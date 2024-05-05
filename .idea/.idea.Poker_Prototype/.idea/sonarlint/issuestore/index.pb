@@ -47,3 +47,9 @@ M
 Assets/Scripts/DeckManager.cs,1\4\14cc48fb112fb4a9ec19f46f2597ea6ac1994620
 O
 Assets/Scripts/Probabilities.cs,4\7\4739cd30c701665eab2dbcf7c23a8174f7931c63
+H
+Assets/Scripts/Defeat.cs,f\2\f2382c3bad2ad48e5cc5ee1d4df5e90135f7dd11
+K
+Assets/Scripts/CardCoins.cs,0\0\00ab6ffc76ab02c74db2f01ea35a7b0ab2f2f955
+K
+Assets/Scripts/CardScore.cs,d\0\d0823775c8b8aeacd900ff72edec42d98fd493c0

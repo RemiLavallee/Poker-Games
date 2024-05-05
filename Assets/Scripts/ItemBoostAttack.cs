@@ -2,11 +2,6 @@ public class ItemBoostAttack : UsingItems
 {
     private CarteManager carte;
 
-    private void Start()
-    {
-       // carte = FindObjectOfType<CarteManager>();
-    }
-
     public override void ApplyModifier()
     {
         carte = FindObjectOfType<CarteManager>();

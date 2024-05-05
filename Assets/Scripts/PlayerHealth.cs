@@ -5,9 +5,11 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public GameObject healthBar;
+    private Defeat defeat;
 
     private void Start()
     {
+        defeat = FindObjectOfType<Defeat>();
         currentHealth = maxHealth;
     }
 
@@ -21,6 +23,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Death()
     {
-        
+        defeat.DefeatCondition();
     }
 }

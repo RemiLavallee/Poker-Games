@@ -26,14 +26,20 @@ public class CarteManager : MonoBehaviour
     private AudioManager audioManager;
     [SerializeField] private GameObject sword1;
     [SerializeField] private GameObject sword2;
+    [SerializeField] private TMP_Text coinsText;
+    [SerializeField] private Inventory inventory;
 
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        inventory = FindObjectOfType<Inventory>();
     }
 
     private void Start()
     {
+        LoadAndSave.instance.LoadData();
+        coinsText.text = inventory.coinsCount.ToString();
+        
         for (int i = 0; i < 4; i++)
         {
             for (int j = 1; j <= 13; j++)
@@ -43,7 +49,6 @@ public class CarteManager : MonoBehaviour
         }
 
         MixDeck();
-
         ButtonStartGame();
     }
 
@@ -138,10 +143,9 @@ public class CarteManager : MonoBehaviour
 
         StartCoroutine(ResetCardSprites());
 
-        CompareHandsForAttack();
+        attackPower = 10;
 
-        //UsingItems usingItemScript = itemsScriptable.prefab.GetComponent<UsingItems>();
-        //usingItemScript.DisableModifier();
+        CompareHandsForAttack();
     }
 
     public void StartGame()
@@ -302,6 +306,7 @@ public class CarteManager : MonoBehaviour
         isFirstDraw = true;
         playerComboText.text = "";
         enemyComboText.text = "";
+        DesactivateCardBoost();
         ButtonStartGame();
     }
 
@@ -404,23 +409,37 @@ public class CarteManager : MonoBehaviour
 
     private IEnumerator animateCard(Carte carte)
     {
-        for (float angle = 0; angle < 180; angle += Time.deltaTime * 180)
+        float duration = 0.2f;
+        float elapsedTime = 0f;
+        
+        Quaternion initialRotation = carte.transform.rotation;
+        Quaternion halfRotation = Quaternion.Euler(0, 180, 0);
+        Quaternion fullRotation = Quaternion.Euler(0, 360, 0);
+        
+        while (elapsedTime < duration)
         {
-            carte.transform.Rotate(0, Time.deltaTime * 180, 0);
+            carte.transform.rotation = Quaternion.Slerp(initialRotation, halfRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
-
+        
+        carte.transform.rotation = halfRotation;
         carte.ShowBackCard();
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         
-        for (float angle = 180; angle < 360; angle += Time.deltaTime * 180)
+        elapsedTime = 0f;
+
+        while (elapsedTime < duration)
         {
-            carte.transform.Rotate(0, Time.deltaTime * 180, 0);
+            carte.transform.rotation = Quaternion.Slerp(halfRotation, fullRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
         
+        carte.transform.rotation = initialRotation;
         carte.ShowFrontCard();
+
     }
 
     public IEnumerator FlipCard(Carte[] carte)
@@ -429,6 +448,59 @@ public class CarteManager : MonoBehaviour
         {
             StartCoroutine(animateCard(card));
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    public void activeCardBoost(string boostName)
+    {
+        List<int> index = new List<int>();
+
+        for (int i = 0; i < main.Length; i++)
+        {
+            index.Add(i);
+        }
+
+        if (index.Count > 0)
+        {
+            int indexRandom = index[Random.Range(0, index.Count)];
+
+            Carte chooseCard = main[indexRandom];
+
+            bool isAnyBoostActive = false;
+            foreach (Transform child in chooseCard.transform)
+            {
+                if (child.gameObject.activeSelf && child.CompareTag("Boost"))
+                {
+                    isAnyBoostActive = true;
+                    break;
+                }
+            }
+
+            if (!isAnyBoostActive)
+            {
+                Transform cardTransform = chooseCard.transform.Find(boostName);
+                if (cardTransform != null && cardTransform.CompareTag("Boost"))
+                {
+                    cardTransform.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void DesactivateCardBoost()
+    {
+        foreach (Carte card in main)
+        {
+            if (card != null)
+            {
+                foreach (Transform child in card.transform)
+                {
+                    if (child.CompareTag("Boost") && child.gameObject.activeSelf)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+            }
         }
     }
 }

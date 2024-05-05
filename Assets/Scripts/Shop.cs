@@ -45,11 +45,22 @@ public class Shop : MonoBehaviour
         public int reliqueCount;
         [SerializeField] private Sprite imageRelique;
     }
+    
+    [Serializable]
+    public class CardInventory
+    {
+        public string nameCard;
+        public TMP_Text cardCountText;
+        public int cardCount;
+        [SerializeField] private Sprite imageCard;
+    }
 
     public List<ItemInventory> itemInventory = new List<ItemInventory>();
     public List<ReliqueInventory> reliqueInventory = new List<ReliqueInventory>();
+    public List<CardInventory> cardInventory = new List<CardInventory>();
     [SerializeField] private GameObject[] imageItem;
     [SerializeField] private GameObject[] imageRelique;
+    [SerializeField] private GameObject[] imageCard;
     private ItemsScriptable selectedItemScriptable = null;
 
     private void Awake()
@@ -81,6 +92,17 @@ public class Shop : MonoBehaviour
                 int itemCount = 0;
                 InventoryManager.instance.itemCounts.TryGetValue(reliqueName, out itemCount);
                 relique.reliqueCountText.text = itemCount.ToString();
+            }
+        }
+        
+        foreach (var card in cardInventory)
+        {
+            if (card.cardCountText != null)
+            {
+                string cardName = card.nameCard;
+                int itemCount = 0;
+                InventoryManager.instance.itemCounts.TryGetValue(cardName, out itemCount);
+                card.cardCountText.text = itemCount.ToString();
             }
         }
         
@@ -195,10 +217,21 @@ public class Shop : MonoBehaviour
             }
         }
     }
+    
+    private void UpdateCardCountUI(string itemName, int newCount)
+    {
+        foreach (var card in cardInventory)
+        {
+            if (card.nameCard == itemName)
+            {
+                card.cardCountText.text = newCount.ToString();
+                break;
+            }
+        }
+    }
 
     public void PressButtonSound()
     {
         audioManager.PlaySound(audioManager.pressButton);
     }
-    
 }

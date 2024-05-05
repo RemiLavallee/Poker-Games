@@ -289,9 +289,9 @@ public class DeckManager : MonoBehaviour
             }
         }
         
+        heldCount = 0;
         prob.DetectProbability();
         prob.DetectBetterProbability();
-        heldCount = 0;
     }
 
     public void AddCardDeck()
@@ -321,9 +321,10 @@ public class DeckManager : MonoBehaviour
             }
         }
 
+        heldCount = 0;
+        
         prob.DetectProbability();
         prob.DetectBetterProbability();
-        heldCount = 0;
     }
 
     public void ResetCardDeck()

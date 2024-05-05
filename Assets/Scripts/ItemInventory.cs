@@ -23,8 +23,17 @@ public class ItemInventory : MonoBehaviour
         public int reliqueCount;
     }
     
+    [Serializable]
+    public class CardInventoryGame
+    {
+        public string nameCard;
+        public TMP_Text cardCountText;
+        public int cardCount;
+    }
+    
     public List<ItemInventoryGame> itemInventoryGame = new List<ItemInventoryGame>();
     public List<ReliqueInventoryGame> reliqueInventoryGame = new List<ReliqueInventoryGame>();
+    public List<CardInventoryGame> cardInventoryGame = new List<CardInventoryGame>();
 
     public void Start()
     {
@@ -43,6 +52,13 @@ public class ItemInventory : MonoBehaviour
             InventoryManager.instance.itemCounts.TryGetValue(relique.nameRelique, out int itemCount);
             relique.reliqueCount = itemCount;
             relique.reliqueCountText.text = itemCount.ToString();
+        }
+        
+        foreach (var card in cardInventoryGame)
+        {
+            InventoryManager.instance.itemCounts.TryGetValue(card.nameCard, out int itemCount);
+            card.cardCount = itemCount;
+            card.cardCountText.text = itemCount.ToString();
         }
     }
 
@@ -69,6 +85,18 @@ public class ItemInventory : MonoBehaviour
             }
         }
     }
+    
+    private void UpdateCardCountUI(string itemName, int newCount)
+    {
+        foreach (var card in cardInventoryGame)
+        {
+            if (card.nameCard == itemName)
+            {
+                card.cardCountText.text = newCount.ToString();
+                break;
+            }
+        }
+    }
 
     public void Use(string itemName)
     {
@@ -83,6 +111,7 @@ public class ItemInventory : MonoBehaviour
                     InventoryManager.instance.itemCounts[itemName]--;
                     UpdateItemCountUI(itemName, InventoryManager.instance.itemCounts[itemName]);
                     UpdateReliqueCountUI(itemName, InventoryManager.instance.itemCounts[itemName]);
+                    UpdateCardCountUI(itemName, InventoryManager.instance.itemCounts[itemName]);
                     usingItemScript.ApplyModifier();
                 }
             }
