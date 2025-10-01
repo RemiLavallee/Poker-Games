@@ -11,15 +11,15 @@
 <h2 align="center">Description</h2>
 
 <p align="center">
-Un jeu de poker où le joueur se bat contre un adversaire afin de terminer la partie. La plus grande main fait des dégâts à l’autre et plus la main est haute, plus elle fait des dégâts. L'utilisateur peut acheter plusieurs objets dans un magasin pour pouvoir utiliser des power Up.
+Un jeu de poker avec des mécaniques de combat RPG tour par tour. Implémentation d'un inventaire et de sa gestion. Le joueur peut acheter des bonus dans une boutique à utiliser pendant la partie via son inventaire.
 </p>
 
 <h2 align="center">Éléments techniques du projet</h2>
 
 <div align="center">
-<li><img src="https://img.shields.io/badge/Audio_Source-lightblue?style=flat&labelColor=lightblue&color=lightblue" alt="Audio Source Badge"/> Intégration de l'Audio Source pour gérer les effets sonores et la musique dans le jeu.</li>
-<li><img src="https://img.shields.io/badge/IEnumerator_Animation-orange?style=flat&labelColor=orange&color=orange" alt="IEnumerator Animation Badge"/> Utilisation de IEnumerator pour gérer les animations avec des coroutines.</li>
-<li><img src="https://img.shields.io/badge/Scriptable_Object-purple?style=flat&labelColor=purple&color=purple" alt="Scriptable Object Badge"/> Implémentation de Scriptable Object pour gérer les données du jeu de manière flexible et modulaire.</li>
+Intégration de l'Audio Source pour gérer les effets sonores et la musique dans le jeu.<br>
+Utilisation de IEnumerator pour gérer les animations avec des coroutines.<br>
+Implémentation de Scriptable Object pour gérer les données du jeu de manière flexible et modulaire.
 </div>
 
 <h2 align="center">Contrôles</h2>
@@ -36,6 +36,6 @@ Un jeu de poker où le joueur se bat contre un adversaire afin de terminer la pa
 <h2 align="center">Crédits</h2>
 
 <div align="center">
-<li>Assets : https://screamingbrainstudios.itch.io/poker-pack.
-<li>Audio : Youtube sounds effect.
+Assets : https://screamingbrainstudios.itch.io/poker-pack.<br>
+Audio : Youtube sounds effect.
 </div>
